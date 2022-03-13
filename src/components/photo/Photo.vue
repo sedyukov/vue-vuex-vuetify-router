@@ -1,6 +1,6 @@
 <template>
   <v-col cols="4">
-    <v-card>
+    <v-card @click="openPhoto">
       <v-card-title>{{ photo.title }}</v-card-title>
       <v-card-text>
         <v-img
@@ -20,6 +20,11 @@ export default {
     photo: {
       type: Object,
       required: true
+    }
+  },
+  methods: {
+    openPhoto() {
+      this.$emit('openPhoto', this.photo)
     }
   }
 }

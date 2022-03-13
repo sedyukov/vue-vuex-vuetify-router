@@ -5,26 +5,29 @@
       <Photo
           v-for="photo in photos"
           :photo="photo"
+          :key="photo.id"
+          @openPhoto="openPhoto"
       />
     </v-row>
-
+    <PhotoDialog :photo="currentPhoto" v-model="dialogVisible"/>
   </v-container>
 </template>
 
 <script>
 import Photo from "@/components/photo/Photo";
 import PhotoForm from "@/components/photo/PhotoForm";
+import PhotoDialog from "@/components/photo/PhotoDialog";
 export default {
   name: "PhotosPage",
   components: {
+    PhotoDialog,
     PhotoForm,
     Photo
   },
   data: () => ({
-    photos: [
-      {id: 1, title: "фото1"},
-      {id: 2, title: "фото2"}
-    ]
+    photos: [],
+    currentPhoto: {},
+    dialogVisible: false
   }),
   mounted(){
     this.fetchPhoto()
@@ -36,6 +39,10 @@ export default {
     },
     addPhoto(photo) {
       this.photos.push(photo)
+    },
+    openPhoto(photo) {
+      this.currentPhoto = photo
+      this.dialogVisible = true
     }
   }
 
