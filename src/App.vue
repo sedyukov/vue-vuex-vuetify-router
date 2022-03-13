@@ -1,20 +1,17 @@
 <template>
   <v-app>
     <div>
-      <v-app-bar
-          color="orange"
-          dense
-          dark
-      >
-      </v-app-bar>
+      <Navbar/>
     </div>
   </v-app>
 </template>
 
 <script>
-
+import Navbar from "@/components/Navbar"
 export default {
   name: 'App',
-
+  components: {
+    Navbar
+  }
 };
 </script>
