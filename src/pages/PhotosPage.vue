@@ -17,6 +17,7 @@
 import Photo from "@/components/photo/Photo";
 import PhotoForm from "@/components/photo/PhotoForm";
 import PhotoDialog from "@/components/photo/PhotoDialog";
+import {mapActions} from 'vuex'
 export default {
   name: "PhotosPage",
   components: {
@@ -31,9 +32,10 @@ export default {
   }),
   mounted(){
    // this.fetchPhoto()
-    this.$store.dispatch("fetchPhotos")
+    this.fetchPhotos()
   },
   methods: {
+    ...mapActions(["fetchPhotos"]),
     // fetchPhoto() {
     //   this.axios.get('https://jsonplaceholder.typicode.com/photos?_limit=5')
     //       .then(response => this.photos = response.data)

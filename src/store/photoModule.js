@@ -10,10 +10,10 @@ export default {
         setPhotos(state, payload) {
             state.photos = payload
         },
-        showDialog(state, payload){
+        showDialog(state){
             state.dialogVisible = true
         },
-        hideDialog(state, payload){
+        hideDialog(state){
             state.dialogVisible = false
         },
         setCurrentPhoto(state, payload){
