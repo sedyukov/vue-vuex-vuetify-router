@@ -5,11 +5,11 @@
           dark
       >
         <v-spacer></v-spacer>
-        <v-btn outlined class="ml-3">
-          <router-link to="/">Главная</router-link>
+        <v-btn to="/" outlined class="ml-3">
+          Главная
         </v-btn>
-        <v-btn outlined class="ml-3">
-          <router-link to="/photo">Фотографии</router-link>
+        <v-btn to="/photo" outlined class="ml-3">
+          Фотографии
         </v-btn>
       </v-app-bar>
     </v-container>
