@@ -1,15 +1,15 @@
 <template>
   <v-container>
-    <PhotoForm @addPhoto="addPhoto"/>
+    <PhotoForm v-if="photos.length < 6" @addPhoto="addPhoto"/>
+    <div v-else>No more photos!</div>
     <v-row>
       <Photo
-          v-for="photo in photos"
+          v-for="photo in $store.getters.getPhotos"
           :photo="photo"
           :key="photo.id"
-          @openPhoto="openPhoto"
       />
     </v-row>
-    <PhotoDialog :photo="currentPhoto" v-model="dialogVisible"/>
+    <PhotoDialog />
   </v-container>
 </template>
 
@@ -26,17 +26,18 @@ export default {
   },
   data: () => ({
     photos: [],
-    currentPhoto: {},
-    dialogVisible: false
+    // currentPhoto: {},
+    // dialogVisible: false
   }),
   mounted(){
-    this.fetchPhoto()
+   // this.fetchPhoto()
+    this.$store.dispatch("fetchPhotos")
   },
   methods: {
-    fetchPhoto() {
-      this.axios.get('https://jsonplaceholder.typicode.com/photos?_limit=5')
-          .then(response => this.photos = response.data)
-    },
+    // fetchPhoto() {
+    //   this.axios.get('https://jsonplaceholder.typicode.com/photos?_limit=5')
+    //       .then(response => this.photos = response.data)
+    // },
     addPhoto(photo) {
       this.photos.push(photo)
     },
